@@ -433,18 +433,22 @@ export default function OrderControl({
                       <span className="ml-1 text-destructive">*</span>
                     </FormLabel>
                     <FormControl>
-                      <FromTruckType
-                        nationcode={form.watch('FROM_NATION_CD')}
-                        value={field.value}
-                        onChange={(e) => {
-                          field.onChange(e.target.value)
-                          form.setValue(
-                            'FROM_TRUCK_TYPE',
-                            e.target.options[e.target.selectedIndex].dataset
-                              .type || '',
-                          )
-                        }}
-                      />
+                      {detail ? (
+                        <Input {...field} defaultValue={detail.FROM_TRUCK_NO} />
+                      ) : (
+                        <FromTruckType
+                          nationcode={form.watch('FROM_NATION_CD')}
+                          value={field.value}
+                          onChange={(e) => {
+                            field.onChange(e.target.value)
+                            form.setValue(
+                              'FROM_TRUCK_TYPE',
+                              e.target.options[e.target.selectedIndex].dataset
+                                .type || '',
+                            )
+                          }}
+                        />
+                      )}
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -465,18 +469,22 @@ export default function OrderControl({
                   <FormItem className="flex-1">
                     <FormLabel className="capitalize">To Truck No</FormLabel>
                     <FormControl>
-                      <ToTruckType
-                        nationcode={form.watch('TO_NATION_CD')}
-                        value={field.value}
-                        onChange={(e) => {
-                          field.onChange(e.target.value)
-                          form.setValue(
-                            'TO_TRUCK_TYPE',
-                            e.target.options[e.target.selectedIndex].dataset
-                              .type || '',
-                          )
-                        }}
-                      />
+                      {detail ? (
+                        <Input {...field} defaultValue={detail.TO_TRUCK_NO} />
+                      ) : (
+                        <ToTruckType
+                          nationcode={form.watch('TO_NATION_CD')}
+                          value={field.value}
+                          onChange={(e) => {
+                            field.onChange(e.target.value)
+                            form.setValue(
+                              'TO_TRUCK_TYPE',
+                              e.target.options[e.target.selectedIndex].dataset
+                                .type || '',
+                            )
+                          }}
+                        />
+                      )}
                     </FormControl>
                     <FormMessage />
                   </FormItem>
